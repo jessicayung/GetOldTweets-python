@@ -95,3 +95,12 @@ pip install -r requirements.txt
 ```
     python Exporter.py --username "barackobama" --maxtweets 10 --toptweets
 ```
+## Extensions for retrieving tweets with Dow Jones cashtags
+
+* To loop through all dates from Sept 1-Dec 31 in 2016 for all Dow Jones symbols, run
+```sh loop_through_symbols_dates.sh```
+* To loop through only a subset of symbols or a subset of dates (or dates in 2017), you can change the date ranges and symbol ranges easily in the file.
+    * You can also run `sh loop_through_dates.sh` if you are only interested in tweets about one symbol or search term. You will need to change the parameters in that file.
+* To then merge the files for each symbol into one CSV file, run
+```sh concatenate_files.sh```
+

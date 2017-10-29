@@ -14,7 +14,7 @@ for s in `seq 1 30` #TODO: set lines to loop through in text file here
 do
 	symbol=`sed "${s}q;d" dow_jones_stocks.txt`
     echo $symbol
-	for i in `seq 1 3` #TODO: set range of dates to loop through in chosen year here
+	for i in `seq 245 366` #TODO: set range of dates to loop through in chosen year here
 	do
         j=$(($i+1))
 	    start_date=`sed "${i}q;d" $file`
