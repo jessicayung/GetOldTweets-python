@@ -88,4 +88,6 @@ ENV/
 .spyderproject
 
 # Rope project settings
-.ropeproject
+.ropeprojectdata/all
+
+data/all
