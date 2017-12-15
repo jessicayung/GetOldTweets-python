@@ -97,6 +97,7 @@ pip install -r requirements.txt
 ```
 ## Extensions for retrieving tweets with Dow Jones cashtags
 
+### Getting tweets
 * To loop through all dates from Sept 1-Dec 31 in 2016 for all Dow Jones symbols, run
 ```sh loop_through_symbols_dates.sh```
 * To loop through only a subset of symbols or a subset of dates (or dates in 2017), you can change the date ranges and symbol ranges easily in the file.
@@ -104,3 +105,9 @@ pip install -r requirements.txt
 * To then merge the files for each symbol into one CSV file, run
 ```sh concatenate_files.sh```
 
+### Sentiment analysis of tweets
+* The script `get_sentiment_scores.py` saves the sentiment scores for tweets for a stock. Usage (once you have all the CSV files for that stock in `data/`: `python get_sentiment_scores $STOCKCASHTAG`. E.g. `python get_sentiment_scores \$aapl`
+    * In its current form the first characted is discarded: what we really want is 'aapl'. So you could run `python get_sentiment_scores 0aapl` and it'd be the same. You can change this in the Python file.
+* The script `sentiment_for_all_symbols` loops through all 30 Dow Jones index symbols and runs `python get_sentiment_scores $STOCKCASHTAG` for each one. As before, you need to have all the CSVs ready in `data/` before you run this.
+    * Usage: `sh sentiment_for_all_symbols.sh`.
+* The scores are in `scores/` and the mean scores are in `mean_scores/`
