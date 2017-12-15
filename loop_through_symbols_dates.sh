@@ -14,13 +14,18 @@ for s in `seq 1 30` #TODO: set lines to loop through in text file here
 do
 	symbol=`sed "${s}q;d" dow_jones_stocks.txt`
     echo $symbol
-	for i in `seq 245 366` #TODO: set range of dates to loop through in chosen year here
+	for i in `seq 366 366` #TODO: set range of dates to loop through in chosen year here
 	do
         j=$(($i+1))
 	    start_date=`sed "${i}q;d" $file`
-		end_date=`sed "${j}q;d" $file`
+        if [[ "$i" -eq 366 ]]; then
+            echo "i = 366"
+            end_date="2017-01-01"
+        else
+		    end_date=`sed "${j}q;d" $file`
+        fi
+        echo $start_date, $end_date, $i
         filename="$symbol${year}_$i.csv"
-        #echo $start_date $end_date $symbol $filename
 		python Exporter.py --querysearch $symbol --since $start_date --until $end_date --output $filename
 	done
 done
